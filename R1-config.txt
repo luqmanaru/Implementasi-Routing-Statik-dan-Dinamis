@@ -1,0 +1,20 @@
+enable
+configure terminal
+hostname R1
+interface GigabitEthernet0/0
+ip address 10.10.10.1 255.255.255.252
+no shutdown
+exit
+interface GigabitEthernet0/1
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+ip dhcp pool R1
+network 192.168.1.0 255.255.255.0
+dns-server 192.168.1.1
+default-router 192.168.1.1
+exit
+ip route 20.20.20.0 255.255.255.252 10.10.10.2
+ip route 192.168.2.0 255.255.255.0 10.10.10.2
+ip route 192.168.3.0 255.255.255.0 10.10.10.2
+end
